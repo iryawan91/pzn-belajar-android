@@ -1,4 +1,4 @@
-package com.example.belajarandroiddasar
+package com.example.pznbelajarandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,14 +7,28 @@ import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var nameEditText: EditText
+    private lateinit var sayHelloButton: Button
+    private lateinit var sayHelloTextView: TextView
+
+    private fun initComponents(){
+        nameEditText: EditText=findViewById(R.id.nameEditText)
+        sayHelloButton: Button=findViewById(R.id.sayHelloButton)
+        sayHelloTextView: TextView=findViewById(R.id.sayHelloTextView)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.hello_world)
 
-        val nameEditText: EditText=findViewById(R.id.nameEditText)
-        val sayButton: Button=findViewById(R.id.sayButton)
-        val sayTextView: TextView=findViewById(R.id.sayTextView)
+        initComponents()
 
-        sayTextView.text="Hallo!"
+        sayHelloTextView.text="Hallo!"
+
+        sayHelloButton.setOnClickListener {
+            val name = nameEditText.text.toString()
+            sayHelloTextView.text =" Hai $name"
+        }
     }
 }
